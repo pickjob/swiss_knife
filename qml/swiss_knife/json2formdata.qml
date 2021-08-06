@@ -17,9 +17,9 @@ Page {
             TextArea {
                 id: srcTextArea
 
-                placeholderText : "PUT SOURCE HERE"
                 wrapMode: TextEdit.WordWrap
                 selectByMouse: true
+                placeholderText : "PUT JSON STRING HERE"
             }
         }
 
@@ -29,6 +29,7 @@ Page {
 
             onClicked: {
                 destTextArea.text = _bridge.transform(srcTextArea.text, 1)
+                srcTextArea.text = _bridge.transform(srcTextArea.text, 2)
             }
         }
 
@@ -42,6 +43,7 @@ Page {
 
                 wrapMode: TextEdit.WordWrap
                 selectByMouse: true
+                placeholderText : "FORMDATA WILL SHOW HERE"
             }
         }
     }

@@ -56,6 +56,7 @@ ApplicationWindow {
     ListModel {
         id: qmlListModel
 
-        ListElement { title: " \uf0ec TransForm"; qmlSource: "transform.qml" }
+        ListElement { title: "Json \uf0ec FormData"; qmlSource: "json2formdata.qml" }
+        ListElement { title: " \uf0ec UrlEncoding"; qmlSource: "urlencoding.qml" }
     }
 }
