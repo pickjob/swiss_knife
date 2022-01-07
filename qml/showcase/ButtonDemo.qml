@@ -29,7 +29,6 @@ Page {
             spacing: 20
             Layout.alignment: Qt.AlignHCenter | Qt.AlignVCenter
 
-
             RoundButton {
                 text: "\u2713"
             }

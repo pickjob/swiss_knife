@@ -16,7 +16,7 @@ ApplicationWindow {
     Component.onCompleted: {
         x = Screen.width / 4
         y = Screen.height / 4
-        toPage(swipeView.count - 1)
+        // toPage(swipeView.count - 1);
     }
 
     header: ToolBar {
@@ -70,6 +70,7 @@ ApplicationWindow {
                 width: listView.width
                 text: title
                 highlighted: ListView.isCurrentItem
+
                 onClicked: {
                     toPage(index)
                     drawer.close()
@@ -88,7 +89,7 @@ ApplicationWindow {
         Repeater {
             model: qmlListModel
             delegate: Loader {
-                active: SwipeView.isCurrentItem || SwipeView.isNextItem || SwipeView.isPreviousItem
+                active: true
                 source: qmlSource
             }
         }
@@ -109,17 +110,17 @@ ApplicationWindow {
     ListModel {
         id: qmlListModel
 
+        ListElement { title: "TextDemo"; qmlSource: "TextDemo.qml" }
         ListElement { title: "ButtonDemo"; qmlSource: "ButtonDemo.qml" }
         ListElement { title: "ChoiceButtonDemo"; qmlSource: "ChoiceButtonDemo.qml" }
         ListElement { title: "SelectorDemo"; qmlSource: "SelectorDemo.qml" }
         ListElement { title: "IndicatorDemo"; qmlSource: "IndicatorDemo.qml" }
-        ListElement { title: "TextDemo"; qmlSource: "TextDemo.qml" }
+        ListElement { title: "ListViewDemo"; qmlSource: "ListViewDemo.qml" }
+        ListElement { title: "DragDropDemo"; qmlSource: "DragDropDemo.qml" }
         ListElement { title: "DialogDemo"; qmlSource: "DialogDemo.qml" }
         ListElement { title: "AnimatorDemo"; qmlSource: "AnimatorDemo.qml" }
         ListElement { title: "AnimationDemo"; qmlSource: "AnimationDemo.qml" }
-        ListElement { title: "ListViewDemo"; qmlSource: "ListViewDemo.qml" }
-
-        // ListElement { title: "test"; qmlSource: "test.qml" }
+        ListElement { title: "LayoutDemo"; qmlSource: "LayoutDemo.qml" }
     }
 
     function nextPage() {
@@ -132,5 +133,15 @@ ApplicationWindow {
 
     function toPage(index) {
         swipeView.setCurrentIndex(index)
+    }
+
+    Shortcut {
+        sequence: "Left"
+        onActivated: previousPage()
+    }
+
+    Shortcut {
+        sequence: "Right"
+        onActivated: nextPage()
     }
 }

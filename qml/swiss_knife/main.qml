@@ -38,7 +38,7 @@ ApplicationWindow {
         Repeater {
             model: qmlListModel
             delegate: Loader {
-                active: StackLayout.isCurrentItem
+                active: true
                 source: qmlSource
             }
         }
@@ -56,7 +56,7 @@ ApplicationWindow {
     ListModel {
         id: qmlListModel
 
-        ListElement { title: "Json \uf0ec FormData"; qmlSource: "json2formdata.qml" }
-        ListElement { title: " \uf0ec UrlEncoding"; qmlSource: "urlencoding.qml" }
+        ListElement { title: "En/De-coding"; qmlSource: "en-de-coding.qml" }
+
     }
 }

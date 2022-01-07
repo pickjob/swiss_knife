@@ -4,12 +4,36 @@ version = "0.1.0"
 edition = "2018"
 
 [dependencies]
-qmetaobject = "0.2.2"
-log = "0.4.11"
-log4rs = {version = "1.0.0", features = ["gzip"]}
-json = "*"
+cstr = "*"
+qmetaobject = "*"
+# Result包装
+anyhow = "*"
+# 异步支持
+futures = "*"
+# 字节流处理
+bytes = "*"
+# 编码
+hex = "*"
+base64 = "*"
 urlencoding = "*"
+# 正则
+regex = "*"
+# 序列化、反序列化
+serde = { version = "*", features = ["derive"] }
+serde_json = "*"
+serde_yaml = "*"
+serde_qs = "*"
+serde-transcode = "*"
+# 时间
+chrono = { version = "*", features = ["serde"] }
+# 日志
+log = { version = "*", features = ["max_level_trace", "release_max_level_info"] }
+flexi_logger = { version = "*", features = ["async", "specfile", "compress"] }
 
 [[example]]
 name = "showcase"
 path = "examples/showcase.rs"
+
+[[example]]
+name = "sync"
+path = "examples/sync.rs"

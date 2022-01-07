@@ -137,6 +137,7 @@ Page {
                     ListElement { text: "Apple" }
                     ListElement { text: "Coconut" }
                 }
+
                 onAccepted: {
                     if (find(editText) === -1)
                         model.append({text: editText})

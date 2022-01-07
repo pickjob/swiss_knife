@@ -10,6 +10,15 @@ Page {
             spacing: 20
             Layout.alignment: Qt.AlignHCenter | Qt.AlignVCenter
 
+            Label {
+                text: "Label"
+            }
+        }
+
+        RowLayout {
+            spacing: 20
+            Layout.alignment: Qt.AlignHCenter | Qt.AlignVCenter
+
             TextField {
                 placeholderText: "TextField"
             }

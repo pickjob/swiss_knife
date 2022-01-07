@@ -1,29 +1,32 @@
-use crate::bridge::transform::{JsonFormat, UrlFormat};
-
 use qmetaobject::prelude::*;
+use self::coding::CodingMode;
 
-mod transform;
+pub mod coding;
 
 #[derive(Default, QObject)]
 pub struct Bridge {
     base: qt_base_class!(trait QObject),
-    transform: qt_method!(fn(&self, src: String, transform_type: u8) -> String),
+    format: qt_method!(fn(&self, mode: String, src: String) -> String),
+    encoding: qt_method!(fn(&self, mode: String, src: String) -> String),
+    decoding: qt_method!(fn(&self, mode: String, src: String) -> String),
 }
 
 impl Bridge {
+    pub fn format(&self, coding_mode: String, src: String) -> String {
+        let code_mode: CodingMode = coding_mode.as_str().into();
 
-    pub fn transform(&self, src: String, transform_type: u8) -> String{
-        log::debug!("src: {}, type: {}", src, transform_type);
-        let mut result = String::new();
-        if transform_type == 1 {
-            result = JsonFormat::transform_form_data(src);
-        } else if transform_type == 2 {
-            result = JsonFormat::pretty_print(src);
-        } else if transform_type == 3 {
-            result = UrlFormat::encoding(src);
-        } else if transform_type == 4 {
-            result = UrlFormat::decoding(src);
-        }
-        return result;
+        code_mode.format(src.as_str())
+    }
+
+    pub fn encoding(&self, coding_mode: String, src: String) -> String {
+        let code_mode: CodingMode = coding_mode.as_str().into();
+
+        code_mode.encoding(src.as_str())
+    }
+
+    pub fn decoding(&self, coding_mode: String, src: String) -> String {
+        let code_mode: CodingMode = coding_mode.as_str().into();
+
+        code_mode.decoding(src.as_str())
     }
 }
